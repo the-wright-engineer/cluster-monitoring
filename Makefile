@@ -29,14 +29,14 @@ fmt:       ## Formats all jsonnet and libsonnet files (except on vendor dir)
 	@echo "Formatting jsonnet files"
 	@find . -name 'vendor' -prune -o -name '*.libsonnet' -o -name '*.jsonnet' -print | xargs -n 1 -- $(JSONNET_FMT) -i
 
-deploy: manifests       ## Rebuilds manifests and deploy to configured cluster
+deploy:       		## Deploy current manifests to configured cluster
 	echo "Deploying stack setup manifests..."
 	kubectl apply -f ./manifests/setup/
 	echo "Will wait 10 seconds to deploy the additional manifests.."
 	sleep 10
 	kubectl apply -f ./manifests/
 
-teardown:       ## Delete all monitoring stack resources from configured cluster
+teardown:       	 ## Delete all monitoring stack resources from configured cluster
 	kubectl delete -f ./manifests/
 	kubectl delete -f ./manifests/setup/
 
@@ -48,7 +48,7 @@ $(JB_BINARY):       ## Installs jsonnet-bundler utility
 	@echo "Installing jsonnet-bundler"
 	@go get -u github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
 
-$(JSONNET_BIN):       ## Installs jsonnet and jsonnetfmt utility
+$(JSONNET_BIN):      ## Installs jsonnet and jsonnetfmt utility
 	@echo "Installing jsonnet"
 	@go get -u github.com/google/go-jsonnet/cmd/jsonnet
 	@go get -u github.com/google/go-jsonnet/cmd/jsonnetfmt
@@ -61,9 +61,11 @@ update_tools:       ## Updates jsonnet, jsonnetfmt and jb utilities
 	@go get -u github.com/brancz/gojsontoyaml
 	@go get -u github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
 
-change_suffix:       ## Changes suffix for the ingress
-	@perl -p -i -e 's/^(\s*)\-\ host:.*/\1- host: alertmanager.${IP}.nip.io/g' manifests/ingress-alertmanager.yaml manifests/ingress-prometheus.yaml manifests/ingress-grafana.yaml
-	@echo "Ingress IPs changed to [service].${IP}.nip.io"
-	${K3S} kubectl apply -f manifests/ingress-alertmanager.yaml
-	${K3S} kubectl apply -f manifests/ingress-grafana.yaml
-	${K3S} kubectl apply -f manifests/ingress-prometheus.yaml
+change_suffix:       ## Changes suffix for the ingress. Pass suffix=[suffixURL] as argument
+	@echo "Ingress IPs changed to [service].${suffix}"
+	@echo "Apply to your cluster with:"
+	@for f in alertmanager prometheus grafana; do \
+		cat manifests/ingress-$$f.yaml | sed -e "s/\(.*$$f\.\).*/\1${suffix}/" > manifests/ingress-$$f.yaml-tmp; \
+		mv -f manifests/ingress-$$f.yaml-tmp manifests/ingress-$$f.yaml; \
+		echo ${K3S} kubectl apply -f manifests/ingress-$$f.yaml; \
+	done
