@@ -46,8 +46,8 @@
   "editable": true,
   "gnetId": 3681,
   "graphTooltip": 1,
-  "id": 13,
-  "iteration": 1549118131383,
+  "id": 4,
+  "iteration": 1596721016726,
   "links": [
     {
       "icon": "info",
@@ -71,6 +71,7 @@
   "panels": [
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -92,8 +93,14 @@
         "rgba(237, 129, 40, 0.89)",
         "#bf1b00"
       ],
-      "datasource": "prometheus",
+      "datasource": "$datasource",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "s",
       "gauge": {
         "maxValue": 1000000,
@@ -174,7 +181,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#bf1b00"
       ],
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "short",
       "gauge": {
         "maxValue": 1000000,
@@ -223,7 +236,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": true
       },
-      "tableColumn": "",
+      "tableColumn": "prometheus_tsdb_head_series{instance=\"localhost:9090\", job=\"prometheus\"}",
       "targets": [
         {
           "expr": "prometheus_tsdb_head_series{instance=\"$instance\"}",
@@ -255,7 +268,13 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -325,7 +344,7 @@
           "value": "null"
         }
       ],
-      "valueName": "avg"
+      "valueName": "first"
     },
     {
       "cacheTimeout": null,
@@ -336,8 +355,14 @@
         "rgba(237, 129, 40, 0.89)",
         "#d44a3a"
       ],
-      "datasource": "prometheus",
+      "datasource": "$datasource",
       "decimals": 2,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "ms",
       "gauge": {
         "maxValue": 100,
@@ -386,7 +411,7 @@
         "lineColor": "rgb(31, 120, 193)",
         "show": false
       },
-      "tableColumn": "",
+      "tableColumn": "{instance=\"localhost:9090\", job=\"prometheus\"}",
       "targets": [
         {
           "expr": "prometheus_tsdb_head_max_time{instance=\"$instance\"} - prometheus_tsdb_head_min_time{instance=\"$instance\"}",
@@ -411,6 +436,13 @@
     },
     {
       "content": "<img src=\"https://cdn.worldvectorlogo.com/logos/prometheus.svg\"/ height=\"140px\">",
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "gridPos": {
         "h": 5,
         "w": 2,
@@ -421,6 +453,11 @@
       "id": 50,
       "links": [],
       "mode": "html",
+      "options": {
+        "content": "<img src=\"https://cdn.worldvectorlogo.com/logos/prometheus.svg\"/ height=\"140px\">",
+        "mode": "html"
+      },
+      "pluginVersion": "7.1.0",
       "title": "",
       "transparent": true,
       "type": "text"
@@ -434,8 +471,14 @@
         "rgba(237, 129, 40, 0.89)",
         "#299c46"
       ],
-      "datasource": "prometheus",
+      "datasource": "$datasource",
       "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -509,6 +552,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -529,13 +573,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 7
       },
+      "hiddenSeries": false,
       "id": 15,
       "legend": {
         "avg": true,
@@ -551,6 +603,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -624,13 +677,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 7
       },
+      "hiddenSeries": false,
       "id": 17,
       "legend": {
         "avg": false,
@@ -646,6 +707,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -726,13 +788,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
         "y": 7
       },
+      "hiddenSeries": false,
       "id": 13,
       "legend": {
         "avg": false,
@@ -748,6 +818,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -901,6 +972,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -922,7 +994,14 @@
       "description": "",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "grid": {},
       "gridPos": {
         "h": 7,
@@ -930,6 +1009,7 @@
         "x": 0,
         "y": 15
       },
+      "hiddenSeries": false,
       "id": 25,
       "legend": {
         "alignAsTable": true,
@@ -948,6 +1028,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1020,13 +1101,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 12,
         "x": 12,
         "y": 15
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "avg": false,
@@ -1042,6 +1131,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1109,6 +1199,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1134,13 +1225,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 0,
         "y": 23
       },
+      "hiddenSeries": false,
       "id": 18,
       "legend": {
         "avg": false,
@@ -1156,6 +1255,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1229,13 +1329,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 6,
         "y": 23
       },
+      "hiddenSeries": false,
       "id": 16,
       "legend": {
         "avg": false,
@@ -1253,6 +1361,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1325,13 +1434,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 12,
         "y": 23
       },
+      "hiddenSeries": false,
       "id": 19,
       "legend": {
         "avg": false,
@@ -1347,6 +1464,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1423,13 +1541,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 18,
         "y": 23
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "avg": false,
@@ -1445,6 +1571,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1522,6 +1649,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1549,13 +1677,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 31
       },
+      "hiddenSeries": false,
       "id": 20,
       "legend": {
         "avg": false,
@@ -1571,6 +1707,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1659,13 +1796,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 31
       },
+      "hiddenSeries": false,
       "id": 21,
       "legend": {
         "avg": false,
@@ -1681,6 +1826,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1754,13 +1900,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
         "y": 31
       },
+      "hiddenSeries": false,
       "id": 39,
       "legend": {
         "avg": false,
@@ -1776,6 +1930,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1849,6 +2004,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1866,14 +2022,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 0,
         "y": 39
       },
+      "hiddenSeries": false,
       "id": 43,
       "legend": {
         "avg": false,
@@ -1889,6 +2053,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1952,14 +2117,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 6,
         "y": 39
       },
+      "hiddenSeries": false,
       "id": 44,
       "legend": {
         "avg": false,
@@ -1975,6 +2148,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2038,14 +2212,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 12,
         "y": 39
       },
+      "hiddenSeries": false,
       "id": 45,
       "legend": {
         "avg": false,
@@ -2061,6 +2243,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2132,13 +2315,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 18,
         "y": 39
       },
+      "hiddenSeries": false,
       "id": 46,
       "legend": {
         "avg": false,
@@ -2154,6 +2345,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2257,6 +2449,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2274,14 +2467,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 0,
         "y": 47
       },
+      "hiddenSeries": false,
       "id": 36,
       "legend": {
         "avg": false,
@@ -2297,6 +2498,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2367,13 +2569,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 6,
         "y": 47
       },
+      "hiddenSeries": false,
       "id": 5,
       "legend": {
         "avg": false,
@@ -2389,6 +2599,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2462,13 +2673,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 12,
         "y": 47
       },
+      "hiddenSeries": false,
       "id": 3,
       "legend": {
         "avg": false,
@@ -2484,6 +2703,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2552,13 +2772,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 18,
         "y": 47
       },
+      "hiddenSeries": false,
       "id": 1,
       "legend": {
         "avg": false,
@@ -2574,6 +2802,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2636,6 +2865,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2662,13 +2892,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 55
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "avg": false,
@@ -2684,6 +2922,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2755,14 +2994,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 55
       },
+      "hiddenSeries": false,
       "id": 35,
       "legend": {
         "avg": false,
@@ -2778,6 +3025,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2848,13 +3096,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
         "y": 55
       },
+      "hiddenSeries": false,
       "id": 4,
       "legend": {
         "avg": false,
@@ -2870,6 +3126,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2937,6 +3194,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2954,14 +3212,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 0,
         "y": 63
       },
+      "hiddenSeries": false,
       "id": 33,
       "legend": {
         "avg": false,
@@ -2977,6 +3243,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3039,14 +3306,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 6,
         "y": 63
       },
+      "hiddenSeries": false,
       "id": 34,
       "legend": {
         "avg": false,
@@ -3062,6 +3337,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3124,14 +3400,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 12,
         "y": 63
       },
+      "hiddenSeries": false,
       "id": 37,
       "legend": {
         "avg": false,
@@ -3147,6 +3431,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3209,14 +3494,22 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 6,
         "x": 18,
         "y": 63
       },
+      "hiddenSeries": false,
       "id": 38,
       "legend": {
         "avg": false,
@@ -3232,6 +3525,7 @@
       "links": [],
       "nullPointMode": "connected",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3291,6 +3585,7 @@
     },
     {
       "collapsed": false,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3323,13 +3618,21 @@
       "decimals": null,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 0,
         "y": 71
       },
+      "hiddenSeries": false,
       "id": 6,
       "legend": {
         "avg": false,
@@ -3345,6 +3648,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3448,13 +3752,21 @@
       "datasource": "$datasource",
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 8,
         "y": 71
       },
+      "hiddenSeries": false,
       "id": 7,
       "legend": {
         "avg": false,
@@ -3470,6 +3782,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3539,13 +3852,21 @@
       "decimals": 2,
       "editable": true,
       "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 8,
         "x": 16,
         "y": 71
       },
+      "hiddenSeries": false,
       "id": 9,
       "legend": {
         "alignAsTable": false,
@@ -3564,6 +3885,7 @@
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
+      "pluginVersion": "7.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3627,1418 +3949,130 @@
       }
     },
     {
-      "collapsed": false,
+      "collapsed": true,
+      "datasource": null,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 78
       },
-      "id": 65,
-      "panels": [],
-      "repeat": null,
-      "title": "Heapster description",
-      "type": "row"
-    },
-    {
-      "content": "Two rows bellow can serve as example if you are running **Prometheus** in **Kubernetes** and uses **Heapster** with **InfluxDB**.\n\nThe schema and queries are very hard to generalize so you will have to tweak them but I leave them here for inspiration.",
-      "gridPos": {
-        "h": 3,
-        "w": 24,
-        "x": 0,
-        "y": 79
-      },
-      "id": 51,
-      "links": [],
-      "mode": "markdown",
-      "title": "Heapster rows",
-      "type": "text"
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 82
-      },
-      "id": 66,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$influx_datasource",
-          "decimals": 2,
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 91
-          },
-          "id": 28,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "cpu/limit.mean ",
-              "color": "#C15C17",
-              "fill": 0
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\")/1000 as \"usage_rate.mean\"  FROM \"cpu/usage_rate\" WHERE \"type\" = 'pod_container' AND \"container_name\" =~ /prometheus/  AND $timeFilter GROUP BY container_name, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\")/1000 as \"usage_rate.mean\"  FROM \"cpu/usage_rate\" WHERE \"type\" = 'pod_container' AND \"container_name\" =~ /prometheus/  AND $timeFilter GROUP BY container_name, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\")/1000 as \"CPU LIMIT\"  FROM \"cpu/limit\" WHERE \"type\" = 'pod_container' AND \"container_name\" =~ /prometheus/  AND $timeFilter GROUP BY container_name, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "CPU usage/s",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$influx_datasource",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 91
-          },
-          "id": 29,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "cpu/limit.mean ",
-              "color": "#C15C17",
-              "fill": 0
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"usage_rate.mean\"  FROM \"memory/usage\" WHERE \"type\" = 'pod_container' AND \"container_name\" =~ /prometheus/  AND $timeFilter GROUP BY container_name, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"usage_rate.mean\"  FROM \"memory/usage\" WHERE \"type\" = 'pod_container' AND \"container_name\" =~ /prometheus/  AND $timeFilter GROUP BY container_name, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"CPU LIMIT\"  FROM \"memory/limit\" WHERE \"type\" = 'pod_container' AND \"container_name\" =~ /prometheus/  AND $timeFilter GROUP BY container_name, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Memory usage",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "decbytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        }
-      ],
-      "repeat": null,
-      "title": "Heapster RAM&CPU",
-      "type": "row"
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 83
-      },
-      "id": 67,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$influx_datasource",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 10,
-            "x": 0,
-            "y": 92
-          },
-          "id": 30,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "/errors/",
-              "color": "#C15C17",
-              "pointradius": 3,
-              "points": true
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"rx_rate.mean \"  FROM \"network/rx_rate\"  WHERE  \"labels\" =~ /app:prometheus/  AND $timeFilter GROUP BY labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"rx_rate.mean\"  FROM \"network/rx_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter GROUP BY  labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\")*-1 as \"tx_rate.mean \"  FROM \"network/tx_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter GROUP BY labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\")*-1 as \"tx_rate.mean\"  FROM \"network/tx_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter GROUP BY  labels, time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "D",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"rx_errors_rate.mean\"  FROM \"network/rx_errors_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter AND \"value\">0 GROUP BY  labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "E",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"rx_errors_rate.mean\"  FROM \"network/rx_errors_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter AND \"value\">0 GROUP BY  labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "F",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"tx_errors_rate.mean\"  FROM \"network/rx_errors_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter AND \"value\">0 GROUP BY  labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "G",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"tx_errors_rate.mean\"  FROM \"network/rx_errors_rate\"  WHERE  \"labels\" =~ /app:prometheus/ AND $timeFilter AND \"value\">0 GROUP BY  labels,  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "H",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Network rx[IN] / tx[OUT] in bytes/s",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "bytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$influx_datasource",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 10,
-            "x": 10,
-            "y": 92
-          },
-          "id": 31,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "cpu/limit.mean",
-              "color": "#C15C17",
-              "fill": 0
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"DISK_USAGE.mean \"  FROM \"filesystem/usage\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"DISK_USAGE.mean \"  FROM \"filesystem/usage\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"DISK_LIMIT.mean \"  FROM \"filesystem/limit\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY  time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"DISK_LIMIT.mean\"  FROM \"filesystem/limit\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "D",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Disk usage",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "decbytes",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "$influx_datasource",
-          "fill": 1,
-          "gridPos": {
-            "h": 7,
-            "w": 4,
-            "x": 20,
-            "y": 92
-          },
-          "id": 32,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "cpu/limit.mean ",
-              "color": "#C15C17",
-              "fill": 0
-            }
-          ],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"FREE_INODES.mean \"  FROM \"filesystem/inodes_free\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "A",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "hide": false,
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"FREE_INODES.mean\"  FROM \"filesystem/inodes_free\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "B",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"USED_INODES.mean \"  FROM \"filesystem/inodes\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "C",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            },
-            {
-              "dsType": "influxdb",
-              "groupBy": [
-                {
-                  "params": [
-                    "$__interval"
-                  ],
-                  "type": "time"
-                },
-                {
-                  "params": [
-                    "null"
-                  ],
-                  "type": "fill"
-                }
-              ],
-              "orderByTime": "ASC",
-              "policy": "default",
-              "query": "SELECT mean(\"value\") as \"USED_INODES.mean\"  FROM \"filesystem/inodes\" WHERE  \"labels\" =~ /data-prometheus:true/ AND $timeFilter GROUP BY time($__interval) fill(null)",
-              "rawQuery": true,
-              "refId": "D",
-              "resultFormat": "time_series",
-              "select": [
-                [
-                  {
-                    "params": [
-                      "value"
-                    ],
-                    "type": "field"
-                  },
-                  {
-                    "params": [],
-                    "type": "mean"
-                  }
-                ]
-              ],
-              "tags": []
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Number of free INODES",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ]
-        }
-      ],
-      "repeat": null,
-      "title": "Heapster host stats",
-      "type": "row"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 84
-      },
       "id": 68,
-      "panels": [],
+      "panels": [
+        {
+          "aliasColors": {
+            "Chunks": "#1F78C1",
+            "Chunks to persist": "#508642",
+            "Max chunks": "#052B51",
+            "Max to persist": "#3F6833"
+          },
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": "$datasource",
+          "editable": true,
+          "error": false,
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 79
+          },
+          "hiddenSeries": false,
+          "id": 47,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "null",
+          "percentage": false,
+          "pluginVersion": "7.1.2",
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(increase(net_conntrack_dialer_conn_failed_total{instance=\"$instance\"}[$aggregation_interval])) by (instance) > 0",
+              "format": "time_series",
+              "hide": false,
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "conntrack_dialer_conn_failed on {{ instance }}",
+              "metric": "prometheus_local_storage_chunk_ops_total",
+              "refId": "M",
+              "step": 1800
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Net errors",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": "0",
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
       "repeat": null,
       "title": "Contrac errors",
       "type": "row"
-    },
-    {
-      "aliasColors": {
-        "Chunks": "#1F78C1",
-        "Chunks to persist": "#508642",
-        "Max chunks": "#052B51",
-        "Max to persist": "#3F6833"
-      },
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "$datasource",
-      "editable": true,
-      "error": false,
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 24,
-        "x": 0,
-        "y": 85
-      },
-      "id": 47,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "sum(increase(net_conntrack_dialer_conn_failed_total{instance=\"$instance\"}[$aggregation_interval])) by (instance) > 0",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "conntrack_dialer_conn_failed on {{ instance }}",
-          "metric": "prometheus_local_storage_chunk_ops_total",
-          "refId": "M",
-          "step": 1800
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Net errors",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
     }
   ],
   "refresh": "5m",
-  "schemaVersion": 16,
+  "schemaVersion": 26,
   "style": "dark",
   "tags": [
     "custom"
@@ -5050,6 +4084,7 @@
         "auto_count": 30,
         "auto_min": "2m",
         "current": {
+          "selected": false,
           "text": "auto",
           "value": "$__auto_interval_aggregation_interval"
         },
@@ -5121,8 +4156,9 @@
       {
         "allValue": null,
         "current": {
-          "text": "10.32.0.53:9090",
-          "value": "10.32.0.53:9090"
+          "selected": false,
+          "text": "localhost:9090",
+          "value": "localhost:9090"
         },
         "datasource": "$datasource",
         "definition": "",
@@ -5163,11 +4199,14 @@
       },
       {
         "current": {
-          "text": "prometheus",
-          "value": "prometheus"
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "hide": 0,
+        "includeAll": false,
         "label": "Prometheus datasource",
+        "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
@@ -5178,11 +4217,14 @@
       },
       {
         "current": {
+          "selected": false,
           "text": "No data sources found",
           "value": ""
         },
         "hide": 0,
+        "includeAll": false,
         "label": "InfluxDB datasource",
+        "multi": false,
         "name": "influx_datasource",
         "options": [],
         "query": "influxdb",
@@ -5223,7 +4265,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Prometheus2.0",
+  "title": "Prometheus Monitoring",
   "uid": "XmsJC9mRz",
-  "version": 1
+  "version": 2
 }

@@ -26,6 +26,11 @@
       file: import 'modules/metallb.jsonnet',
     },
     {
+      name: 'nginxExporter',
+      enabled: false,
+      file: import 'modules/nginx.jsonnet',
+    },
+    {
       name: 'traefikExporter',
       enabled: false,
       file: import 'modules/traefik.jsonnet',
@@ -39,11 +44,11 @@
 
   k3s: {
     enabled: false,
-    master_ip: ['192.168.15.15'],
+    master_ip: ['192.168.1.15'],
   },
 
   // Domain suffix for the ingresses
-  suffixDomain: '192.168.15.15.nip.io',
+  suffixDomain: '192.168.1.15.nip.io',
   // If TLSingress is true, a self-signed HTTPS ingress with redirect will be created
   TLSingress: true,
   // If UseProvidedCerts is true, provided files will be used on created HTTPS ingresses.
@@ -52,14 +57,34 @@
   TLSCertificate: importstr 'server.crt',
   TLSKey: importstr 'server.key',
 
-  // Setting these to false, defaults to emptyDirs
+  // Persistent volume configuration
   enablePersistence: {
+    // Setting these to false, defaults to emptyDirs.
     prometheus: false,
     grafana: false,
+    // If using a pre-created PV, fill in the names below. If blank, they will use the default StorageClass
+    prometheusPV: '',
+    grafanaPV: '',
+    // If required to use a specific storageClass, keep the PV names above blank and fill the storageClass name below.
+    storageClass: '',
+    // Define the PV sizes below
+    prometheusSizePV: '2Gi',
+    grafanaSizePV: '20Gi',
   },
 
-  // Grafana "from" email
+  // Configuration for Prometheus deployment
+  prometheus: {
+    retention: '15d',
+    scrapeInterval: '30s',
+    scrapeTimeout: '30s',
+  },
   grafana: {
+    // Grafana "from" email
     from_address: 'myemail@gmail.com',
+    // Plugins to be installed at runtime.
+    //Ex. plugins: ['grafana-piechart-panel', 'grafana-clock-panel'],
+    plugins: [],
+    //Ex. env: [ { name: 'http_proxy', value: 'host:8080' } ]
+    env: []
   },
 }

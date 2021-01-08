@@ -36,7 +36,11 @@ There are also options to set the ingress domain suffix and enable persistence f
 
 The ingresses can use TLS with the default self-signed certificate from your Ingress controller by setting `TLSingress` to `true` and use a custom certificate by creating the files `server.crt` and `server.key` and enabling the `UseProvidedCerts` parameter at `vars.jsonnet`.
 
-Changing these parameters require a rebuild of the manifests with `make`.
+Persistence for Prometheus and Grafana can be enabled in the `enablePersistence` section. Setting each to `true`, creates the volume PVCs. If no PV names are defined in `prometheusPV` and `grafanaPV`, the default StorageClass will be used to dynamically create the PVs The sizes can be adjusted in `prometheusSizePV` and `grafanaSizePV`.
+
+If using pre-created persistent volumes (samples in [`samples`](samples)), check permissions on the directories hosting the files. The `UID:GID` for Prometheus is `1000:0` and for Grafana is `472:472`.
+
+Changing these parameters require a rebuild of the manifests with `make` followed by `make deploy`. To avoid installing all pre-requisites like Golang, Jsonnet, Jsonnet-bundler, use the target `make docker` to build in a container.
 
 ## Quickstart (non K3s)
 

@@ -58,6 +58,8 @@ local vars = import 'vars.jsonnet';
           },
         },
       },
+      plugins: vars.grafana.plugins,
+      env: vars.grafana.env
     },
   },
   //---------------------------------------
@@ -69,8 +71,11 @@ local vars = import 'vars.jsonnet';
     local pvc = k.core.v1.persistentVolumeClaim,
     prometheus+: {
       spec+: {
+               // Here one can use parameters from https://coreos.com/operators/prometheus/docs/latest/api.html#prometheusspec
                replicas: $._config.prometheus.replicas,
-               retention: '15d',
+               retention: vars.prometheus.retention,
+               scrapeInterval: vars.prometheus.scrapeInterval,
+               scrapeTimeout: vars.prometheus.scrapeTimeout,
                externalUrl: 'http://' + $._config.urls.prom_ingress,
              }
              + (if vars.enablePersistence.prometheus then {
@@ -78,9 +83,9 @@ local vars = import 'vars.jsonnet';
                     volumeClaimTemplate:
                       pvc.new() +
                       pvc.mixin.spec.withAccessModes('ReadWriteOnce') +
-                      pvc.mixin.spec.resources.withRequests({ storage: '20Gi' }),
-                    // Uncomment below to define a StorageClass name
-                    //+ pvc.mixin.spec.withStorageClassName('nfs-master-ssd'),
+                      pvc.mixin.spec.resources.withRequests({ storage: vars.enablePersistence.prometheusSizePV }) +
+                      (if vars.enablePersistence.prometheusPV != null then pvc.mixin.spec.withVolumeName(vars.enablePersistence.prometheusPV)) +
+                      (if vars.enablePersistence.storageClass != null then pvc.mixin.spec.withStorageClassName(vars.enablePersistence.storageClass)),
                   },
                 } else {}),
     },
@@ -120,7 +125,10 @@ local vars = import 'vars.jsonnet';
       pvc.mixin.metadata.withNamespace($._config.namespace) +
       pvc.mixin.metadata.withName('grafana-storage') +
       pvc.mixin.spec.withAccessModes('ReadWriteOnce') +
-      pvc.mixin.spec.resources.withRequests({ storage: '2Gi' }),
+      pvc.mixin.spec.resources.withRequests({ storage: vars.enablePersistence.grafanaSizePV }) +
+      (if vars.enablePersistence.grafanaPV != null then pvc.mixin.spec.withVolumeName(vars.enablePersistence.grafanaPV)) +
+      (if vars.enablePersistence.storageClass != null then pvc.mixin.spec.withStorageClassName(vars.enablePersistence.storageClass)),
+
   } else {},
 
   grafanaDashboards+:: $._config.grafanaDashboards,
@@ -131,7 +139,7 @@ local vars = import 'vars.jsonnet';
       local I = utils.newIngress('alertmanager-main', $._config.namespace, $._config.urls.alert_ingress, '/', 'alertmanager-main', 'web');
       if vars.TLSingress then
         if vars.UseProvidedCerts then
-          utils.addIngressTLS(I, 'ingress-TLS-secret')
+          utils.addIngressTLS(I, 'ingress-secret')
         else
           utils.addIngressTLS(I)
       else
@@ -141,7 +149,7 @@ local vars = import 'vars.jsonnet';
       local I = utils.newIngress('grafana', $._config.namespace, $._config.urls.grafana_ingress, '/', 'grafana', 'http');
       if vars.TLSingress then
         if vars.UseProvidedCerts then
-          utils.addIngressTLS(I, 'ingress-TLS-secret')
+          utils.addIngressTLS(I, 'ingress-secret')
         else
           utils.addIngressTLS(I)
       else
@@ -151,7 +159,7 @@ local vars = import 'vars.jsonnet';
       local I = utils.newIngress('prometheus-k8s', $._config.namespace, $._config.urls.prom_ingress, '/', 'prometheus-k8s', 'web');
       if vars.TLSingress then
         if vars.UseProvidedCerts then
-          utils.addIngressTLS(I, 'ingress-TLS-secret')
+          utils.addIngressTLS(I, 'ingress-secret')
         else
           utils.addIngressTLS(I)
       else
@@ -183,6 +191,6 @@ local vars = import 'vars.jsonnet';
     //     secret.mixin.metadata.withNamespace($._config.namespace),
   } + if vars.UseProvidedCerts then {
     secret:
-      utils.newTLSSecret('ingress-TLS-secret', $._config.namespace, vars.TLSCertificate, vars.TLSKey),
+      utils.newTLSSecret('ingress-secret', $._config.namespace, vars.TLSCertificate, vars.TLSKey),
   } else {},
 }

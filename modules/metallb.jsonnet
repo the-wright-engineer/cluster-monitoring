@@ -24,5 +24,20 @@ local k = import 'ksonnet/ksonnet.beta.4/k.libsonnet';
       service.mixin.metadata.withNamespace('metallb-system') +
       service.mixin.metadata.withLabels({ 'k8s-app': 'metallb-controller' }) +
       service.mixin.spec.withClusterIp('None'),
+
+    clusterRole:
+      utils.newClusterRole('metallb-exporter', [
+        {
+          apis: [''],
+          res: ['services', 'endpoints', 'pods'],
+          verbs: ['get', 'list', 'watch'],
+        },
+      ], null),
+
+
+    clusterRoleBinding:
+      utils.newClusterRoleBinding('metallb-exporter', 'prometheus-k8s', $._config.namespace, 'metallb-exporter', null),
+
+
   },
 }
