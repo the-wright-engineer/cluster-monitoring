@@ -12,7 +12,7 @@
     },
     {
       name: 'armExporter',
-      enabled: false,
+      enabled: true,
       file: import 'modules/arm_exporter.jsonnet',
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       name: 'metallbExporter',
-      enabled: false,
+      enabled: true,
       file: import 'modules/metallb.jsonnet',
     },
     {
@@ -60,16 +60,16 @@
   // Persistent volume configuration
   enablePersistence: {
     // Setting these to false, defaults to emptyDirs.
-    prometheus: false,
-    grafana: false,
+    prometheus: true,
+    grafana: true,
     // If using a pre-created PV, fill in the names below. If blank, they will use the default StorageClass
     prometheusPV: '',
     grafanaPV: '',
     // If required to use a specific storageClass, keep the PV names above blank and fill the storageClass name below.
-    storageClass: '',
+    storageClass: 'local-path',
     // Define the PV sizes below
     prometheusSizePV: '2Gi',
-    grafanaSizePV: '20Gi',
+    grafanaSizePV: '2Gi',
   },
 
   // Configuration for Prometheus deployment
@@ -85,6 +85,6 @@
     //Ex. plugins: ['grafana-piechart-panel', 'grafana-clock-panel'],
     plugins: [],
     //Ex. env: [ { name: 'http_proxy', value: 'host:8080' } ]
-    env: []
+    env: [],
   },
 }

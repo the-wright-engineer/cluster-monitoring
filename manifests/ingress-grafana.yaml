@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   rules:
-  - host: grafana.192.168.1.15.nip.io
+  - host: grafana.itdad.world
     http:
       paths:
       - backend:
@@ -14,4 +14,4 @@ spec:
         path: /
   tls:
   - hosts:
-    - grafana.192.168.1.15.nip.io
+    - grafana.itdad.world
